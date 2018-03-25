@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>CoffeeMakerTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">InventoryTest (Mar 25, 2018 4:41:25 PM)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.project4.coffeemaker</a> &gt; <span class="el_source">CoffeeMakerTest.java</span></div><h1>CoffeeMakerTest.java</h1><pre class="source lang-java linenums">package edu.towson.cis.cosc442.project4.coffeemaker;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+
+import junit.framework.TestCase;
+
+/**
+ *
+ */
+<span class="nc" id="L13">public class CoffeeMakerTest extends TestCase {</span>
+	private CoffeeMakerInterface cm;
+	private Inventory i;
+	private Recipe r1;
+
+	public void setUp() {
+<span class="nc" id="L19">		cm = new CoffeeMaker();</span>
+<span class="nc" id="L20">		i = cm.checkInventory();</span>
+
+<span class="nc" id="L22">		r1 = new Recipe();</span>
+<span class="nc" id="L23">		r1.setName(&quot;Coffee&quot;);</span>
+<span class="nc" id="L24">		r1.setPrice(50);</span>
+<span class="nc" id="L25">		r1.setAmtCoffee(6);</span>
+<span class="nc" id="L26">		r1.setAmtMilk(1);</span>
+<span class="nc" id="L27">		r1.setAmtSugar(1);</span>
+<span class="nc" id="L28">		r1.setAmtChocolate(0);</span>
+<span class="nc" id="L29">	}</span>
+
+	public void testAddRecipe1() {
+<span class="nc" id="L32">		assertTrue(cm.addRecipe(r1));</span>
+<span class="nc" id="L33">	}</span>
+
+	public void testDeleteRecipe1() {
+<span class="nc" id="L36">		cm.addRecipe(r1);</span>
+<span class="nc" id="L37">		assertTrue(cm.deleteRecipe(r1));</span>
+<span class="nc" id="L38">	}</span>
+
+	public void testEditRecipe1() {
+<span class="nc" id="L41">		cm.addRecipe(r1);</span>
+<span class="nc" id="L42">		Recipe newRecipe = new Recipe();</span>
+<span class="nc" id="L43">		newRecipe = r1;</span>
+<span class="nc" id="L44">		newRecipe.setAmtSugar(2);</span>
+<span class="nc" id="L45">		assertTrue(cm.editRecipe(r1, newRecipe));</span>
+<span class="nc" id="L46">	}</span>
+	@Test
+	public void testCoffeeMaker_1()
+		throws Exception {
+
+<span class="nc" id="L51">		CoffeeMaker result = new CoffeeMaker();</span>
+
+		// add additional test code here
+<span class="nc" id="L54">		assertNotNull(result);</span>
+<span class="nc" id="L55">	}</span>
+	@Test
+	public void testCoffeeMaker_2()
+		throws Exception {
+
+<span class="nc" id="L60">		CoffeeMaker result = new CoffeeMaker();</span>
+
+		// add additional test code here
+<span class="nc" id="L63">		assertNotNull(result);</span>
+<span class="nc" id="L64">	}</span>
+	@Test
+	public void testAddInventory_1()
+		throws Exception {
+<span class="nc" id="L68">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L69">		int amtCoffee = 1;</span>
+<span class="nc" id="L70">		int amtMilk = 1;</span>
+<span class="nc" id="L71">		int amtSugar = 0;</span>
+<span class="nc" id="L72">		int amtChocolate = -1;</span>
+
+<span class="nc" id="L74">		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);</span>
+
+		// add additional test code here
+<span class="nc" id="L77">		assertEquals(false, result);</span>
+<span class="nc" id="L78">	}</span>
+	@Test
+	public void testAddInventory_2()
+		throws Exception {
+<span class="nc" id="L82">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L83">		int amtCoffee = 1;</span>
+<span class="nc" id="L84">		int amtMilk = 1;</span>
+<span class="nc" id="L85">		int amtSugar = 0;</span>
+<span class="nc" id="L86">		int amtChocolate = 1;</span>
+
+<span class="nc" id="L88">		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);</span>
+
+		// add additional test code here
+<span class="nc" id="L91">		assertEquals(true, result);</span>
+<span class="nc" id="L92">	}</span>
+	@Test
+	public void testAddInventory_3()
+		throws Exception {
+<span class="nc" id="L96">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L97">		int amtCoffee = -1;</span>
+<span class="nc" id="L98">		int amtMilk = 1;</span>
+<span class="nc" id="L99">		int amtSugar = 1;</span>
+<span class="nc" id="L100">		int amtChocolate = 1;</span>
+
+<span class="nc" id="L102">		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);</span>
+
+		// add additional test code here
+<span class="nc" id="L105">		assertEquals(false, result);</span>
+<span class="nc" id="L106">	}</span>
+	@Test
+	public void testAddInventory_4()
+		throws Exception {
+<span class="nc" id="L110">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L111">		int amtCoffee = 1;</span>
+<span class="nc" id="L112">		int amtMilk = -1;</span>
+<span class="nc" id="L113">		int amtSugar = 1;</span>
+<span class="nc" id="L114">		int amtChocolate = 1;</span>
+
+<span class="nc" id="L116">		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);</span>
+
+		// add additional test code here
+<span class="nc" id="L119">		assertEquals(false, result);</span>
+<span class="nc" id="L120">	}</span>
+	@Test
+	public void testAddInventory_5()
+		throws Exception {
+<span class="nc" id="L124">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L125">		int amtCoffee = 1;</span>
+<span class="nc" id="L126">		int amtMilk = 1;</span>
+<span class="nc" id="L127">		int amtSugar = 1;</span>
+<span class="nc" id="L128">		int amtChocolate = 1;</span>
+
+<span class="nc" id="L130">		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);</span>
+
+		// add additional test code here
+<span class="nc" id="L133">		assertEquals(false, result);</span>
+<span class="nc" id="L134">	}</span>
+	@Test
+	public void testAddRecipe_1()
+		throws Exception {
+<span class="nc" id="L138">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L139">		Recipe r = new Recipe();</span>
+
+<span class="nc" id="L141">		boolean result = fixture.addRecipe(r);</span>
+
+		// add additional test code here
+<span class="nc" id="L144">		assertEquals(true, result);</span>
+<span class="nc" id="L145">	}</span>
+	@Test
+	public void testAddRecipe_2()
+		throws Exception {
+<span class="nc" id="L149">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L150">		Recipe r = new Recipe();</span>
+
+<span class="nc" id="L152">		boolean result = fixture.addRecipe(r);</span>
+
+		// add additional test code here
+<span class="nc" id="L155">		assertEquals(true, result);</span>
+<span class="nc" id="L156">	}</span>
+	@Test
+	public void testAddRecipe_3()
+		throws Exception {
+<span class="nc" id="L160">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L161">		Recipe r = new Recipe();</span>
+
+<span class="nc" id="L163">		boolean result = fixture.addRecipe(r);</span>
+
+		// add additional test code here
+<span class="nc" id="L166">		assertEquals(true, result);</span>
+<span class="nc" id="L167">	}</span>
+	@Test
+	public void testCheckInventory_1()
+		throws Exception {
+<span class="nc" id="L171">		CoffeeMaker fixture = new CoffeeMaker();</span>
+
+<span class="nc" id="L173">		Inventory result = fixture.checkInventory();</span>
+
+		// add additional test code here
+<span class="nc" id="L176">		assertNotNull(result);</span>
+<span class="nc" id="L177">		assertEquals(&quot;Coffee: 15\nMilk: 15\nSugar: 15\nChocolate: 15\n&quot;, result.toString());</span>
+<span class="nc" id="L178">		assertEquals(15, result.getCoffee());</span>
+<span class="nc" id="L179">		assertEquals(15, result.getChocolate());</span>
+<span class="nc" id="L180">		assertEquals(15, result.getSugar());</span>
+<span class="nc" id="L181">		assertEquals(15, result.getMilk());</span>
+<span class="nc" id="L182">	}</span>
+	@Test
+	public void testDeleteRecipe_1()
+		throws Exception {
+<span class="nc" id="L186">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L187">		Recipe r = new Recipe();</span>
+
+<span class="nc" id="L189">		boolean result = fixture.deleteRecipe(r);</span>
+
+		// add additional test code here
+<span class="nc" id="L192">		assertEquals(false, result);</span>
+<span class="nc" id="L193">	}</span>
+
+	/**
+	 * Run the boolean deleteRecipe(Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testDeleteRecipe_2()
+		throws Exception {
+<span class="nc" id="L205">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L206">		Recipe r = new Recipe();</span>
+
+<span class="nc" id="L208">		boolean result = fixture.deleteRecipe(r);</span>
+
+		// add additional test code here
+<span class="nc" id="L211">		assertEquals(false, result);</span>
+<span class="nc" id="L212">	}</span>
+
+	/**
+	 * Run the boolean deleteRecipe(Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testDeleteRecipe_3()
+		throws Exception {
+<span class="nc" id="L224">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L225">		Recipe r = new Recipe();</span>
+
+<span class="nc" id="L227">		boolean result = fixture.deleteRecipe(r);</span>
+
+		// add additional test code here
+<span class="nc" id="L230">		assertEquals(false, result);</span>
+<span class="nc" id="L231">	}</span>
+
+	/**
+	 * Run the boolean deleteRecipe(Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testDeleteRecipe_4()
+		throws Exception {
+<span class="nc" id="L243">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L244">		Recipe r = null;</span>
+
+<span class="nc" id="L246">		boolean result = fixture.deleteRecipe(r);</span>
+
+		// add additional test code here
+<span class="nc" id="L249">		assertEquals(false, result);</span>
+<span class="nc" id="L250">	}</span>
+
+	/**
+	 * Run the boolean editRecipe(Recipe,Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testEditRecipe_1()
+		throws Exception {
+<span class="nc" id="L262">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L263">		Recipe oldRecipe = new Recipe();</span>
+<span class="nc" id="L264">		Recipe newRecipe = new Recipe();</span>
+
+<span class="nc" id="L266">		boolean result = fixture.editRecipe(oldRecipe, newRecipe);</span>
+
+		// add additional test code here
+<span class="nc" id="L269">		assertEquals(false, result);</span>
+<span class="nc" id="L270">	}</span>
+
+	/**
+	 * Run the boolean editRecipe(Recipe,Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testEditRecipe_2()
+		throws Exception {
+<span class="nc" id="L282">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L283">		Recipe oldRecipe = new Recipe();</span>
+<span class="nc" id="L284">		Recipe newRecipe = new Recipe();</span>
+
+<span class="nc" id="L286">		boolean result = fixture.editRecipe(oldRecipe, newRecipe);</span>
+
+		// add additional test code here
+<span class="nc" id="L289">		assertEquals(false, result);</span>
+<span class="nc" id="L290">	}</span>
+
+	/**
+	 * Run the boolean editRecipe(Recipe,Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testEditRecipe_3()
+		throws Exception {
+<span class="nc" id="L302">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L303">		Recipe oldRecipe = new Recipe();</span>
+<span class="nc" id="L304">		Recipe newRecipe = new Recipe();</span>
+
+<span class="nc" id="L306">		boolean result = fixture.editRecipe(oldRecipe, newRecipe);</span>
+
+		// add additional test code here
+<span class="nc" id="L309">		assertEquals(false, result);</span>
+<span class="nc" id="L310">	}</span>
+
+	/**
+	 * Run the boolean editRecipe(Recipe,Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testEditRecipe_4()
+		throws Exception {
+<span class="nc" id="L322">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L323">		Recipe oldRecipe = new Recipe();</span>
+<span class="nc" id="L324">		Recipe newRecipe = new Recipe();</span>
+
+<span class="nc" id="L326">		boolean result = fixture.editRecipe(oldRecipe, newRecipe);</span>
+
+		// add additional test code here
+<span class="nc" id="L329">		assertEquals(false, result);</span>
+<span class="nc" id="L330">	}</span>
+
+	/**
+	 * Run the boolean editRecipe(Recipe,Recipe) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testEditRecipe_5()
+		throws Exception {
+<span class="nc" id="L342">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L343">		Recipe oldRecipe = new Recipe();</span>
+<span class="nc" id="L344">		Recipe newRecipe = new Recipe();</span>
+
+<span class="nc" id="L346">		boolean result = fixture.editRecipe(oldRecipe, newRecipe);</span>
+
+		// add additional test code here
+<span class="nc" id="L349">		assertEquals(false, result);</span>
+<span class="nc" id="L350">	}</span>
+
+	/**
+	 * Run the Recipe getRecipeForName(String) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testGetRecipeForName_1()
+		throws Exception {
+<span class="nc" id="L362">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L363">		String name = &quot;&quot;;</span>
+
+<span class="nc" id="L365">		Recipe result = fixture.getRecipeForName(name);</span>
+
+		// add additional test code here
+<span class="nc" id="L368">		assertNotNull(result);</span>
+<span class="nc" id="L369">		assertEquals(null, result.toString());</span>
+<span class="nc" id="L370">		assertEquals(null, result.getName());</span>
+<span class="nc" id="L371">		assertEquals(0, result.getAmtChocolate());</span>
+<span class="nc" id="L372">		assertEquals(0, result.getAmtSugar());</span>
+<span class="nc" id="L373">		assertEquals(0, result.getAmtMilk());</span>
+<span class="nc" id="L374">		assertEquals(0, result.getAmtCoffee());</span>
+<span class="nc" id="L375">		assertEquals(0, result.getPrice());</span>
+<span class="nc" id="L376">	}</span>
+
+	/**
+	 * Run the Recipe getRecipeForName(String) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testGetRecipeForName_2()
+		throws Exception {
+<span class="nc" id="L388">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L389">		String name = &quot;&quot;;</span>
+
+<span class="nc" id="L391">		Recipe result = fixture.getRecipeForName(name);</span>
+
+		// add additional test code here
+<span class="nc" id="L394">		assertNotNull(result);</span>
+<span class="nc" id="L395">		assertEquals(null, result.toString());</span>
+<span class="nc" id="L396">		assertEquals(null, result.getName());</span>
+<span class="nc" id="L397">		assertEquals(0, result.getAmtChocolate());</span>
+<span class="nc" id="L398">		assertEquals(0, result.getAmtSugar());</span>
+<span class="nc" id="L399">		assertEquals(0, result.getAmtMilk());</span>
+<span class="nc" id="L400">		assertEquals(0, result.getAmtCoffee());</span>
+<span class="nc" id="L401">		assertEquals(0, result.getPrice());</span>
+<span class="nc" id="L402">	}</span>
+
+	/**
+	 * Run the Recipe getRecipeForName(String) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testGetRecipeForName_3()
+		throws Exception {
+<span class="nc" id="L414">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L415">		String name = &quot;&quot;;</span>
+
+<span class="nc" id="L417">		Recipe result = fixture.getRecipeForName(name);</span>
+
+		// add additional test code here
+<span class="nc" id="L420">		assertNotNull(result);</span>
+<span class="nc" id="L421">		assertEquals(null, result.toString());</span>
+<span class="nc" id="L422">		assertEquals(null, result.getName());</span>
+<span class="nc" id="L423">		assertEquals(0, result.getAmtChocolate());</span>
+<span class="nc" id="L424">		assertEquals(0, result.getAmtSugar());</span>
+<span class="nc" id="L425">		assertEquals(0, result.getAmtMilk());</span>
+<span class="nc" id="L426">		assertEquals(0, result.getAmtCoffee());</span>
+<span class="nc" id="L427">		assertEquals(0, result.getPrice());</span>
+<span class="nc" id="L428">	}</span>
+
+	/**
+	 * Run the Recipe getRecipeForName(String) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testGetRecipeForName_4()
+		throws Exception {
+<span class="nc" id="L440">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L441">		String name = &quot;&quot;;</span>
+
+<span class="nc" id="L443">		Recipe result = fixture.getRecipeForName(name);</span>
+
+		// add additional test code here
+<span class="nc" id="L446">		assertNotNull(result);</span>
+<span class="nc" id="L447">		assertEquals(null, result.toString());</span>
+<span class="nc" id="L448">		assertEquals(null, result.getName());</span>
+<span class="nc" id="L449">		assertEquals(0, result.getAmtChocolate());</span>
+<span class="nc" id="L450">		assertEquals(0, result.getAmtSugar());</span>
+<span class="nc" id="L451">		assertEquals(0, result.getAmtMilk());</span>
+<span class="nc" id="L452">		assertEquals(0, result.getAmtCoffee());</span>
+<span class="nc" id="L453">		assertEquals(0, result.getPrice());</span>
+<span class="nc" id="L454">	}</span>
+
+	/**
+	 * Run the Recipe[] getRecipes() method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testGetRecipes_1()
+		throws Exception {
+<span class="nc" id="L466">		CoffeeMaker fixture = new CoffeeMaker();</span>
+
+<span class="nc" id="L468">		Recipe[] result = fixture.getRecipes();</span>
+
+		// add additional test code here
+<span class="nc" id="L471">		assertNotNull(result);</span>
+<span class="nc" id="L472">		assertEquals(4, result.length);</span>
+<span class="nc" id="L473">		assertNotNull(result[0]);</span>
+<span class="nc" id="L474">		assertEquals(null, result[0].toString());</span>
+<span class="nc" id="L475">		assertEquals(null, result[0].getName());</span>
+<span class="nc" id="L476">		assertEquals(0, result[0].getAmtChocolate());</span>
+<span class="nc" id="L477">		assertEquals(0, result[0].getAmtSugar());</span>
+<span class="nc" id="L478">		assertEquals(0, result[0].getAmtMilk());</span>
+<span class="nc" id="L479">		assertEquals(0, result[0].getAmtCoffee());</span>
+<span class="nc" id="L480">		assertEquals(0, result[0].getPrice());</span>
+<span class="nc" id="L481">		assertNotNull(result[1]);</span>
+<span class="nc" id="L482">		assertEquals(null, result[1].toString());</span>
+<span class="nc" id="L483">		assertEquals(null, result[1].getName());</span>
+<span class="nc" id="L484">		assertEquals(0, result[1].getAmtChocolate());</span>
+<span class="nc" id="L485">		assertEquals(0, result[1].getAmtSugar());</span>
+<span class="nc" id="L486">		assertEquals(0, result[1].getAmtMilk());</span>
+<span class="nc" id="L487">		assertEquals(0, result[1].getAmtCoffee());</span>
+<span class="nc" id="L488">		assertEquals(0, result[1].getPrice());</span>
+<span class="nc" id="L489">		assertNotNull(result[2]);</span>
+<span class="nc" id="L490">		assertEquals(null, result[2].toString());</span>
+<span class="nc" id="L491">		assertEquals(null, result[2].getName());</span>
+<span class="nc" id="L492">		assertEquals(0, result[2].getAmtChocolate());</span>
+<span class="nc" id="L493">		assertEquals(0, result[2].getAmtSugar());</span>
+<span class="nc" id="L494">		assertEquals(0, result[2].getAmtMilk());</span>
+<span class="nc" id="L495">		assertEquals(0, result[2].getAmtCoffee());</span>
+<span class="nc" id="L496">		assertEquals(0, result[2].getPrice());</span>
+<span class="nc" id="L497">		assertNotNull(result[3]);</span>
+<span class="nc" id="L498">		assertEquals(null, result[3].toString());</span>
+<span class="nc" id="L499">		assertEquals(null, result[3].getName());</span>
+<span class="nc" id="L500">		assertEquals(0, result[3].getAmtChocolate());</span>
+<span class="nc" id="L501">		assertEquals(0, result[3].getAmtSugar());</span>
+<span class="nc" id="L502">		assertEquals(0, result[3].getAmtMilk());</span>
+<span class="nc" id="L503">		assertEquals(0, result[3].getAmtCoffee());</span>
+<span class="nc" id="L504">		assertEquals(0, result[3].getPrice());</span>
+<span class="nc" id="L505">	}</span>
+
+	/**
+	 * Run the int makeCoffee(Recipe,int) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testMakeCoffee_1()
+		throws Exception {
+<span class="nc" id="L517">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L518">		Recipe r = new Recipe();</span>
+<span class="nc" id="L519">		int amtPaid = 1;</span>
+
+<span class="nc" id="L521">		int result = fixture.makeCoffee(r, amtPaid);</span>
+
+		// add additional test code here
+<span class="nc" id="L524">		assertEquals(1, result);</span>
+<span class="nc" id="L525">	}</span>
+
+	/**
+	 * Run the int makeCoffee(Recipe,int) method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	@Test
+	public void testMakeCoffee_2()
+		throws Exception {
+<span class="nc" id="L537">		CoffeeMaker fixture = new CoffeeMaker();</span>
+<span class="nc" id="L538">		Recipe r = new Recipe();</span>
+<span class="nc" id="L539">		int amtPaid = 1;</span>
+
+<span class="nc" id="L541">		int result = fixture.makeCoffee(r, amtPaid);</span>
+
+		// add additional test code here
+<span class="nc" id="L544">		assertEquals(1, result);</span>
+<span class="nc" id="L545">	}</span>
+
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *         if the initialization fails for some reason
+	 *
+	 * @generatedBy CodePro at 3/25/18 3:52 PM
+	 */
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>InventoryTest (Mar 25, 2018 4:41:25 PM)</div></body></html>
