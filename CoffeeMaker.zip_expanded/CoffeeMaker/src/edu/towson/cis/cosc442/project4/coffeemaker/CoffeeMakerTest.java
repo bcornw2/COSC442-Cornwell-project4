@@ -31,6 +31,24 @@ public class CoffeeMakerTest extends TestCase {
 	public void testAddRecipe1() {
 		assertTrue(cm.addRecipe(r1));
 	}
+	public void testAddRecipe_Mutation() {
+		cm.addRecipe(r1);
+		
+		Recipe r2 = new Recipe();
+		Recipe r3 = new Recipe();
+		r2.setName("Frank");
+		r3.setName("Frank");
+		
+		
+		cm.addRecipe(r2);
+		cm.addRecipe(r3);
+		assertFalse(cm.addRecipe(r3));
+		
+	}
+	public void testAddRecipe_Mutation2() {
+		cm.addRecipe(r1);
+		
+	}
 
 	public void testDeleteRecipe1() {
 		cm.addRecipe(r1);
